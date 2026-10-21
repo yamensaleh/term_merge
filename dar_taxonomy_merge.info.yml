@@ -1,0 +1,7 @@
+name: 'DAR Taxonomy Merge'
+type: module
+description: 'Browse vocabularies, find duplicate terms, and merge them into a surviving term while relinking all referencing records.'
+package: Custom
+core_version_requirement: ^10
+dependencies:
+  - drupal:taxonomy

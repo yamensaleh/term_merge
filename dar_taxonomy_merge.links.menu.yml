@@ -1,0 +1,13 @@
+dar_taxonomy_merge.index:
+  title: 'Merge taxonomy terms'
+  parent: system.admin_content
+  route_name: dar_taxonomy_merge.index
+  description: 'Browse vocabularies and merge duplicate taxonomy terms.'
+  weight: 10
+
+dar_taxonomy_merge.settings:
+  title: 'Taxonomy merge settings'
+  parent: system.admin_config_content
+  route_name: dar_taxonomy_merge.settings
+  description: 'Choose which vocabularies may be merged and tune batch sizes.'
+  weight: 10

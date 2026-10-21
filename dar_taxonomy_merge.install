@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for the DAR Taxonomy Merge module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_requirements().
+ *
+ * Warns when a configured vocabulary does not exist on this instance, so a
+ * tenant with a different vocabulary set does not fail silently.
+ */
+function dar_taxonomy_merge_requirements(string $phase): array {
+  $requirements = [];
+  if ($phase !== 'runtime') {
+    return $requirements;
+  }
+
+  $configured = \Drupal::config('dar_taxonomy_merge.settings')->get('vocabularies') ?? [];
+  $missing    = [];
+  $storage    = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary');
+  foreach ($configured as $vid) {
+    if ($storage->load($vid) === NULL) {
+      $missing[] = $vid;
+    }
+  }
+
+  $requirements['dar_taxonomy_merge_vocabularies'] = [
+    'title'       => t('Taxonomy merge vocabularies'),
+    'value'       => $missing === [] ? t('All configured vocabularies exist.') : t('Missing: @vids', ['@vids' => implode(', ', $missing)]),
+    'severity'    => $missing === [] ? REQUIREMENT_OK : REQUIREMENT_WARNING,
+    'description' => $missing === []
+      ? NULL
+      : t('Update the <a href=":settings">taxonomy merge settings</a> to match the vocabularies available on this site.', [':settings' => Url::fromRoute('dar_taxonomy_merge.settings')->toString()]),
+  ];
+  return $requirements;
+}

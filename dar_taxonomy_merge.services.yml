@@ -1,0 +1,14 @@
+services:
+  dar_taxonomy_merge.repository:
+    class: Drupal\dar_taxonomy_merge\Repository\MergeRepository
+    arguments: ['@database', '@language_manager', '@entity_field.manager', '@config.factory', '@entity_type.manager']
+
+  dar_taxonomy_merge.term_merger:
+    class: Drupal\dar_taxonomy_merge\Services\TermMerger
+    arguments:
+      - '@entity_type.manager'
+      - '@entity_field.manager'
+      - '@logger.factory'
+      - '@messenger'
+      - '@config.factory'
+      - '@string_translation'

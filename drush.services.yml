@@ -1,0 +1,8 @@
+services:
+  dar_taxonomy_merge.merge_commands:
+    class: Drupal\dar_taxonomy_merge\Commands\MergeCommands
+    arguments:
+      - '@dar_taxonomy_merge.term_merger'
+      - '@dar_taxonomy_merge.repository'
+    tags:
+      - { name: drush.command }

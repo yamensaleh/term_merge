@@ -1,0 +1,4 @@
+'administer dar taxonomy merge':
+  title: 'Administer taxonomy term merge'
+  description: 'Browse vocabularies and merge taxonomy terms, relinking all referencing records to the surviving term.'
+  restrict access: TRUE

@@ -1,0 +1,9 @@
+vocabularies:
+  - person
+  - corporate_body
+  - family
+  - subject
+  - geo_location
+  - temporal_subjects
+batch_chunk_size: 10
+drush_threshold: 200

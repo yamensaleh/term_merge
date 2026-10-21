@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Hooks for the DAR Taxonomy Merge module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function dar_taxonomy_merge_help(string $route_name): ?string {
+  if ($route_name === 'help.page.dar_taxonomy_merge') {
+    $output  = '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('Browse vocabularies, spot duplicate terms, and merge several terms into one surviving term. Every record that referenced a merged term is relinked to the survivor, and the merged terms are unpublished.') . '</p>';
+    $output .= '<p>' . t('Open the <a href=":merge">Merge taxonomy terms</a> page to start.', [':merge' => Url::fromRoute('dar_taxonomy_merge.index')->toString()]) . '</p>';
+    return $output;
+  }
+  return NULL;
+}

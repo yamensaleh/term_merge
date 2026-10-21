@@ -1,0 +1,28 @@
+/**
+ * @file
+ * Styling for the taxonomy merge browse page.
+ */
+
+.dar-taxonomy-merge-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: flex-end;
+  margin-bottom: 1em;
+}
+
+.dar-taxonomy-merge-toolbar .form-item {
+  margin: 0;
+}
+
+.dar-taxonomy-merge-duplicates-toggle {
+  white-space: nowrap;
+}
+
+.dar-taxonomy-merge-group {
+  margin-bottom: 1em;
+}
+
+.dar-taxonomy-merge-group summary {
+  font-weight: bold;
+}

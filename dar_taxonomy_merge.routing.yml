@@ -1,0 +1,42 @@
+dar_taxonomy_merge.index:
+  path: '/admin/content/term-merge'
+  defaults:
+    _controller: '\Drupal\dar_taxonomy_merge\Controller\IndexController::index'
+    _title: 'Merge taxonomy terms'
+  requirements:
+    _permission: 'administer dar taxonomy merge'
+  options:
+    _admin_route: TRUE
+
+dar_taxonomy_merge.browse:
+  path: '/admin/content/term-merge/{taxonomy_vocabulary}'
+  defaults:
+    _form: '\Drupal\dar_taxonomy_merge\Form\TermBrowseForm'
+    _title: 'Merge taxonomy terms'
+  requirements:
+    _permission: 'administer dar taxonomy merge'
+  options:
+    _admin_route: TRUE
+    parameters:
+      taxonomy_vocabulary:
+        type: entity:taxonomy_vocabulary
+
+dar_taxonomy_merge.confirm:
+  path: '/admin/content/term-merge/confirm'
+  defaults:
+    _form: '\Drupal\dar_taxonomy_merge\Form\MergeConfirmForm'
+    _title: 'Confirm term merge'
+  requirements:
+    _permission: 'administer dar taxonomy merge'
+  options:
+    _admin_route: TRUE
+
+dar_taxonomy_merge.settings:
+  path: '/admin/config/content/taxonomy-merge'
+  defaults:
+    _form: '\Drupal\dar_taxonomy_merge\Form\VocabSettingsForm'
+    _title: 'Taxonomy merge settings'
+  requirements:
+    _permission: 'administer dar taxonomy merge'
+  options:
+    _admin_route: TRUE
